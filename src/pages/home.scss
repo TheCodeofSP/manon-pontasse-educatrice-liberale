@@ -1,0 +1,345 @@
+@use "../styles/tokens.scss" as t;
+@use "../styles/mixins.scss" as m;
+@use "../styles/animations.scss";
+
+/* Base */
+.home {
+  width: 100%;
+}
+
+.home__content {
+  @include m.content;
+}
+
+/* H1 */
+.home__h1 {
+  @include m.title-h1;
+  text-align: center;
+  max-width: 12ch;
+  margin-inline: auto;
+}
+
+/* Intro */
+.home__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: t.$space-xl;
+  position: relative;
+  padding: clamp(1rem, 3vw, 2.4rem);
+  border-radius: 56px 84px 48px 76px;
+  background: rgba(251, 246, 238, 0.68);
+  border: 1px solid rgba(64, 54, 48, 0.1);
+
+  @include m.up(t.$bp-mobile) {
+    flex-direction: row;
+    align-items: center;
+    gap: t.$space-l;
+    width: 100%;
+  }
+}
+
+.home__introImg {
+  order: 2;
+  width: 240px;
+  flex: 0 0 240px;
+  position: relative;
+
+  @include m.up(t.$bp-mobile) {
+    order: 1;
+    width: clamp(280px, 30vw, 360px);
+    flex: 0 0 clamp(280px, 30vw, 360px);
+  }
+}
+
+.home__introImg::before {
+  content: "";
+  position: absolute;
+  inset: -16px -18px 12px -20px;
+  z-index: -1;
+  border-radius: 61% 39% 48% 52% / 43% 57% 43% 57%;
+  background: t.$color-accent;
+  transform: rotate(-4deg);
+}
+
+.home__portrait {
+  display: block;
+  width: 240px;
+  height: 320px;
+  margin: 0 auto;
+
+  object-fit: cover;
+
+  border-radius: 48% 52% 43% 57% / 38% 43% 57% 62%;
+  box-shadow: t.$shadow-lg;
+
+  @include m.up(t.$bp-mobile) {
+    margin: 0;
+    width: clamp(280px, 30vw, 360px);
+    height: clamp(380px, 42vw, 480px);
+  }
+}
+
+.home__introText {
+  order: 1;
+  width: 100%;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: t.$space-s;
+
+  @include m.up(t.$bp-mobile) {
+    order: 2;
+    flex: 1 1 auto;
+    width: auto;
+    text-align: center;
+  }
+}
+
+.home__subtitle {
+  @include m.text-lead;
+  margin-inline: auto;
+
+  @include m.up(t.$bp-mobile) {
+    margin-inline: 0;
+  }
+}
+
+/* Profil selector */
+.home__profile {
+  display: grid;
+  gap: t.$space-xs;
+}
+
+.home__profileLabel {
+  margin: 0;
+  font-weight: 700;
+  color: t.$color-title;
+}
+
+/* Tabs */
+.home__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-xs;
+  justify-content: center;
+
+  @include m.up(t.$bp-mobile) {
+    margin: auto;
+  }
+}
+
+.home__tab {
+  appearance: none;
+
+  background: t.$input-background;
+  border: 1px solid t.$color-border;
+  border-radius: t.$radius-pill;
+
+  padding: 10px 12px;
+  min-height: 44px;
+
+  cursor: pointer;
+  font-weight: 600;
+  color: t.$color-text-primary;
+
+  transition:
+    transform t.$duration-fast t.$ease-standard,
+    background t.$duration-medium t.$ease-standard,
+    border-color t.$duration-medium t.$ease-standard;
+
+  @include m.hover {
+    &:hover {
+      transform: translateY(-1px);
+      background: t.$color-primary-hover;
+      color: white;
+      border-color: transparent;
+    }
+  }
+
+  &.is-active {
+    background: t.$color-primary;
+    color: white;
+    border-color: transparent;
+  }
+
+  @include m.focus(2px);
+}
+
+.home__panel {
+  text-align: left;
+  padding: t.$space-s 0 0;
+  border-top: 1px solid rgba(201, 135, 112, 0.58);
+  margin-inline: auto;
+
+  @include m.up(t.$bp-mobile) {
+    margin-inline: 0;
+  }
+}
+
+.home__panelTitle {
+  @include m.title-h3;
+  margin-bottom: t.$space-2xs;
+}
+
+.home__panelLead {
+  @include m.text-lead;
+  margin-bottom: t.$space-xs;
+}
+
+.home__panelText {
+  @include m.text-body;
+  @include m.text-muted;
+}
+
+/* Blocks */
+.home__blocks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: t.$space-l;
+  align-items: start;
+}
+
+@include m.up(t.$bp-mobile) {
+  .home__blocks {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+  }
+}
+
+.home__card {
+  text-align: left;
+
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-s;
+  padding: clamp(1.3rem, 3vw, 2.1rem);
+  border-radius: 38px 58px 40px 52px;
+  background: rgba(251, 246, 238, 0.72);
+  border: 1px solid rgba(64, 54, 48, 0.1);
+}
+.home__card > * {
+  min-width: 0;
+}
+.home__card,
+.home__card p,
+.home__card h2,
+.home__card h3,
+.home__card a,
+.home__panel,
+.home__panel p,
+.home__panel h2,
+.home__panel h3 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.home__card--accent {
+  background: rgba(217, 189, 130, 0.18);
+  border-color: rgba(155, 89, 75, 0.18);
+}
+
+/* H2 */
+.home__h2 {
+  @include m.title-h2;
+  margin-bottom: 0;
+}
+
+/* Highlights */
+.home__highlightsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: t.$space-m;
+  margin-top: t.$space-s;
+
+  @include m.up(t.$bp-mobile) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.home__highlightCard {
+  @include m.panel(t.$color-surface, t.$shadow-sm);
+  padding: 0.8rem;
+  border-radius: 22px 30px 22px 28px;
+
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: t.$space-xs;
+  align-items: center;
+
+  @include m.lift(-2px, t.$shadow-md);
+}
+
+.home__highlightIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 46% 52% 43%;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(119, 135, 125, 0.16);
+  border: 1px solid t.$color-border;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+  }
+}
+
+.home__highlightText {
+  margin: 0;
+  line-height: t.$line-height-text;
+  color: t.$color-text-secondary;
+}
+
+/* Paragraphs + CTA */
+.home__paragraphs {
+  display: grid;
+  gap: t.$space-s;
+  min-width: 0;
+  width: 100%;
+}
+
+.home__paragraphs p {
+  margin: 0;
+  line-height: t.$line-height-text;
+  color: t.$color-text-secondary;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.home__ctaRow {
+  margin-top: t.$space-m;
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-s;
+  justify-content: flex-start;
+}
+
+.home__btn {
+  @include m.link-reset;
+}
+
+/* Boutons via mixins */
+.home__btn--primary {
+  @include m.btn-primary;
+}
+
+.home__btn--ghost {
+  @include m.btn-ghost;
+}
+
+/* Loading/Error */
+.home__state {
+  @include m.panel(t.$color-surface, t.$shadow-sm);
+  text-align: center;
+}

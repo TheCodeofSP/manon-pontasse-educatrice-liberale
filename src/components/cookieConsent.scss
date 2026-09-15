@@ -1,0 +1,76 @@
+@use "../styles/tokens.scss" as t;
+.cookieConsent {
+  position: fixed;
+  inset: auto 16px 16px;
+  z-index: 3000;
+  display: flex;
+  justify-content: center;
+}
+.cookieConsent__inner {
+  display: grid;
+  gap: 18px;
+  width: min(100%, 880px);
+  padding: 22px;
+  color: t.$color-text-primary;
+  background: t.$color-card-background;
+  border: 1px solid t.$color-border;
+  border-radius: t.$radius-organic-medium;
+  box-shadow: 0 22px 65px rgba(43, 31, 26, 0.24);
+}
+.cookieConsent__copy h2 {
+  margin: 0 0 8px;
+  font-family: t.$font-family-heading;
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+}
+.cookieConsent__copy p {
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+.cookieConsent__copy a {
+  color: t.$color-link;
+  font-weight: 700;
+}
+.cookieConsent__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.cookieConsent__actions button {
+  min-height: 46px;
+  padding: 10px 16px;
+  color: t.$color-text-primary;
+  background: #fff;
+  border: 2px solid t.$color-primary;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.cookieConsent__actions button:last-child {
+  color: #fff;
+  background: t.$color-primary;
+}
+.cookieConsent__actions button:hover,
+.cookieConsent__actions button:focus-visible {
+  color: #fff;
+  background: t.$color-primary-hover;
+  outline: 3px solid t.$focus-ring;
+  outline-offset: 2px;
+}
+@media (min-width: 760px) {
+  .cookieConsent__inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+  .cookieConsent__actions {
+    min-width: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .cookieConsent {
+    inset: auto 8px 8px;
+  }
+  .cookieConsent__actions {
+    grid-template-columns: 1fr;
+  }
+}

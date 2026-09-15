@@ -1,0 +1,100 @@
+@use "./styles/tokens.scss" as t;
+@use "./styles/mixins.scss" as m;
+
+main {
+  flex: 1;
+  overflow: clip;
+}
+
+/* Décor transversal inspiré de la carte de visite : papier et aplats
+   organiques. Les formes restent volontairement sobres pour laisser le logo
+   porter l'identité visuelle. */
+.home,
+.about,
+.process,
+.info,
+.contact,
+.legal,
+.privacy,
+.not-found {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(2rem, 5vw, 5rem);
+}
+
+.home::before,
+.about::before,
+.process::before,
+.info::before,
+.contact::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 3rem;
+  right: -8rem;
+  width: clamp(15rem, 29vw, 27rem);
+  aspect-ratio: 1.15;
+  border-radius: 58% 42% 63% 37% / 42% 61% 39% 58%;
+  background: rgba(119, 135, 125, 0.16);
+  transform: rotate(-9deg);
+}
+
+.home::after,
+.about::after,
+.process::after,
+.info::after,
+.contact::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 14rem;
+  left: -5rem;
+  width: 10rem;
+  height: 7rem;
+  border-radius: 46% 54% 36% 64% / 58% 37% 63% 42%;
+  background: rgba(201, 135, 112, 0.2);
+  transform: rotate(18deg);
+}
+
+@media (max-width: 767px) {
+  .home::before,
+  .about::before,
+  .process::before,
+  .info::before,
+  .contact::before {
+    right: -11rem;
+    opacity: 0.7;
+  }
+}
+
+/* Page container */
+.page {
+  @include m.container;
+
+  /* Padding vertical de page (container gère déjà le padding horizontal) */
+  padding-top: t.$space-l;
+  padding-bottom: t.$space-2xl;
+}
+
+/* Sections */
+.page-section {
+  padding-block: t.$space-xl;
+
+  /* Ancres (#section) + header sticky */
+  scroll-margin-top: 96px;
+}
+
+/* Structure interne */
+.page-section__header {
+  display: grid;
+  gap: t.$space-xs;
+  margin-bottom: t.$space-l;
+
+  /* Lisibilité premium (évite les lignes trop longues) */
+  max-width: t.$measure-text;
+}
+
+.page-section__content {
+  display: grid;
+  gap: t.$space-m;
+}

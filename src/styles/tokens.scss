@@ -1,0 +1,177 @@
+@use "sass:color";
+
+/* ======================================================
+   TOKENS — CORE (nouvelle base, à utiliser progressivement)
+   Objectif : design system chaud / premium / maintenable
+   ====================================================== */
+
+/* ----------------------------
+   Couleurs — Marque & Fond
+   ---------------------------- */
+$color-primary: #77877d; // vert sauge de la carte
+$color-secondary: #c98770; // terre cuite douce
+$color-accent: #d9bd82; // jaune sable
+
+$color-background: #f0e8dc; // fond page “papier”
+
+$color-ivory: #fffaf2;
+$color-cream: #f8f1e7;
+$color-milk: #eee2d5;
+
+$color-card-background: #fbf6ee;
+$color-card-background-strong: rgba(251, 246, 238, 0.94);
+$color-surface: rgba(226, 210, 194, 0.48);
+
+$color-surface-hover: rgba(255, 245, 235, 0.6);
+$color-card-hover: rgba(255, 245, 235, 0.72);
+
+$color-overlay-dark: rgba(43, 31, 26, 0.22);
+$color-overlay-paper: rgba(231, 216, 198, 0.62);
+
+/* ----------------------------
+   Couleurs — Texte & UI
+   ---------------------------- */
+$color-text-primary: #403630;
+$color-title: #29231f;
+
+$color-text-secondary: color.change($color-text-primary, $alpha: 0.76);
+$color-text-tertiary: color.change($color-text-primary, $alpha: 0.55);
+
+$color-border: color.change($color-text-primary, $alpha: 0.16);
+$color-border-secondary: color.change($color-text-primary, $alpha: 0.1);
+
+$color-link: #9b594b;
+$color-link-hover: color.adjust($color-link, $lightness: -10%);
+
+$color-success: #6f857a;
+$color-warning: #b98d4f;
+$color-danger: #a85f57;
+
+$color-primary-hover: color.adjust($color-primary, $lightness: -8%);
+$color-secondary-hover: color.adjust($color-secondary, $lightness: -8%);
+$color-accent-hover: color.adjust($color-accent, $lightness: -10%);
+
+$focus-ring: rgba(119, 135, 125, 0.48);
+$focus-ring-strong: rgba(119, 135, 125, 0.65);
+
+/* ----------------------------
+   Effet “papier”
+   ---------------------------- */
+$paper-sheen-gradient: linear-gradient(
+  rgba(255, 255, 255, 0.14),
+  rgba(255, 255, 255, 0.06)
+);
+
+$paper-sheen-gradient-strong: linear-gradient(
+  rgba(255, 255, 255, 0.18),
+  rgba(255, 255, 255, 0.07)
+);
+
+/* ----------------------------
+   Typographie — CORE
+   ---------------------------- */
+$font-family-title: "MonteCarlo", cursive;
+$font-family-heading: "Playfair Display", serif;
+$font-family-text: "Lora", serif;
+
+$font-weight-title: 500;
+$font-weight-heading: 600;
+$font-weight-text: 400;
+$font-weight-lead: 500;
+$font-weight-button: 600;
+
+$font-size-title: 64px;
+$font-size-subtitle: clamp(1.375rem, 2.2vw, 1.625rem);
+$font-size-heading: 1.25rem;
+$font-size-text: 1rem;
+$font-size-lead: 1.125rem;
+$font-size-small: 0.875rem;
+$font-size-button: 1rem;
+
+$line-height-title: 1.1;
+$line-height-text: 1.6;
+
+$measure-text: 68ch;
+
+/* ----------------------------
+   Layout — spacing / radius
+   ---------------------------- */
+$container-max-width: 1280px;
+$container-padding: clamp(16px, 3vw, 36px);
+
+$space-2xs: 0.25rem;
+$space-xs: 0.5rem;
+$space-s: 1rem;
+$space-m: 1.5rem;
+$space-l: 2rem;
+$space-xl: 3rem;
+$space-2xl: 4rem;
+
+$radius-card: 30px;
+$radius-button: 999px;
+$radius-input: 14px;
+$radius-pill: 999px;
+$radius-organic-large: 44px 64px 46px 58px;
+$radius-organic-medium: 30px 44px 32px 40px;
+$radius-organic-small: 20px 28px 22px 26px;
+
+/* ----------------------------
+   Composants — inputs / buttons
+   ---------------------------- */
+$card-border: 1px solid $color-border;
+$card-padding: 20px;
+
+$input-background: #ffffff;
+$input-border: 1px solid $color-border;
+$input-padding-y: 12px;
+$input-padding-x: 14px;
+$placeholder-color: color.change($color-text-primary, $alpha: 0.45);
+
+$button-primary: $color-primary;
+$button-secondary: $color-secondary;
+$button-accent: $color-accent;
+
+$button-text: #ffffff;
+$button-text-dark: $color-text-primary;
+$button-padding-y: 12px;
+$button-padding-x: 16px;
+
+/* ----------------------------
+   Ombres
+   ---------------------------- */
+$shadow-sm: 0 5px 18px rgba(77, 58, 47, 0.08);
+$shadow-md: 0 12px 30px rgba(77, 58, 47, 0.11);
+$shadow-glass:
+  0 5px 16px rgba(77, 58, 47, 0.07),
+  0 18px 44px rgba(77, 58, 47, 0.1);
+$shadow-lg:
+  0 10px 25px rgba(120, 85, 60, 0.12),
+  0 22px 55px rgba(120, 85, 60, 0.16);
+$shadow-accent:
+  0 10px 30px rgba(226, 194, 143, 0.18),
+  0 24px 70px rgba(226, 194, 143, 0.22);
+
+/* Glass */
+$glass-border: 1px solid rgba(255, 255, 255, 0.25);
+$glass-border-strong: 1px solid rgba(255, 255, 255, 0.38);
+
+/* Motion */
+$duration-fast: 160ms;
+$duration-medium: 260ms;
+$duration-slow: 520ms;
+
+$ease-standard: ease;
+$ease-out: ease-out;
+$ease-in-out: ease-in-out;
+
+/* Breakpoints */
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop: 1200px;
+
+/* Z-index */
+$z-base: 0;
+$z-header: 10;
+$z-dropdown: 20;
+$z-overlay: 30;
+$z-modal: 40;
