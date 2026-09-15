@@ -108,9 +108,7 @@ export default function Home() {
       />
 
       <div className="home">
-        <h1 className="home__h1 reveal reveal--up" style={{ "--delay": "0ms" }}>
-          {heroTitle}
-        </h1>
+        <h1 className="home__h1">{heroTitle}</h1>
 
         <div className="home__content">
           {/* Intro */}

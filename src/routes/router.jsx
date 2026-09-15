@@ -1,7 +1,8 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Layout from "../layout/Layout.jsx";
-const Home = lazy(() => import("../pages/Home.jsx"));
+import Home from "../pages/Home.jsx";
+
 const About = lazy(() => import("../pages/About.jsx"));
 const Process = lazy(() => import("../pages/Process.jsx"));
 const Informations = lazy(() => import("../pages/Informations.jsx"));
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     errorElement: page(<NotFound />),
     children: [
-      { index: true, element: page(<Home />) },
+      { index: true, element: <Home /> },
       { path: "me-connaitre", element: page(<About />) },
       { path: "mon-approche", element: page(<Process />) },
       { path: "informations", element: page(<Informations />) },

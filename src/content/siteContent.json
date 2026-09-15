@@ -24,12 +24,7 @@
       "tagline": "Déficience intellectuelle, avec ou sans trouble associé"
     },
     "personalization": {
-      "profiles": [
-        "visitor",
-        "accompagne",
-        "accompagnant",
-        "partenaire_social"
-      ],
+      "profiles": ["visitor", "accompagne", "accompagnant", "partenaire_social"],
       "addressing": {
         "visitor": "vous",
         "accompagne": "tu",
@@ -373,11 +368,7 @@
             "accompagnant": "Comprendre les règles sociales, s’exprimer, gérer les interactions.",
             "partenaire_social": "Comprendre les règles sociales, s’exprimer, gérer les interactions."
           },
-          "details": [
-            "Jeux de rôle",
-            "Scénarios sociaux",
-            "Outils de communication"
-          ]
+          "details": ["Jeux de rôle", "Scénarios sociaux", "Outils de communication"]
         },
         {
           "title": {
@@ -1272,7 +1263,15 @@
       "dataCollected": {
         "title": "Données collectées",
         "lead": "Les données personnelles collectées via le formulaire de contact sont :",
-        "items": ["Profil", "Objet de la demande", "Nom", "Adresse email", "Numéro de téléphone facultatif", "Message", "Consentement"]
+        "items": [
+          "Profil",
+          "Objet de la demande",
+          "Nom",
+          "Adresse email",
+          "Numéro de téléphone facultatif",
+          "Message",
+          "Consentement"
+        ]
       },
       "use": {
         "title": "Utilisation des données",
