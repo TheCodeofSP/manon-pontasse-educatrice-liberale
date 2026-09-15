@@ -3,6 +3,7 @@ import { useContent } from "../content/useContent.js";
 import { PROFILES, useProfile } from "../context/profile/ProfileContext.jsx";
 import { formspreeEndpoint, hasFormspreeConfiguration } from "../config/environment.js";
 import { getContactErrors } from "../lib/contactValidation.js";
+import { trackEvent } from "../lib/analytics.js";
 
 const initialValues = (profile = "") => ({
   profile,
@@ -171,6 +172,11 @@ export function useContactForm() {
         signal: controller.signal,
       });
       if (response.ok) {
+        trackEvent("generate_lead", {
+          lead_source: "contact_form",
+          user_profile: values.profile,
+          contact_topic: values.topic,
+        });
         setStatus({ type: "success", message: copy.success });
         setValues(initialValues(values.profile));
         setTouched({});

@@ -8,6 +8,7 @@ import {
   serviceAreaPolygon,
   serviceAreaZoom,
 } from "../../data/serviceAreaMapData.js";
+import { trackContactClick } from "../../lib/analytics.js";
 
 const emergencyNumbers = [
   "15 – SAMU",
@@ -58,7 +59,16 @@ export default function ContactDetails({ methods }) {
                 <div className="contact__methodBody">
                   <p className="contact__methodLabel">{method.label}</p>
                   {href ? (
-                    <a className="contact__methodValue" href={href}>
+                    <a
+                      className="contact__methodValue"
+                      href={href}
+                      onClick={() =>
+                        trackContactClick(
+                          isEmail ? "email" : "phone",
+                          "contact_details",
+                        )
+                      }
+                    >
                       {method.value}
                     </a>
                   ) : (

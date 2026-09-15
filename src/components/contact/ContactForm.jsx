@@ -1,6 +1,7 @@
 import { CONTACT_LIMITS } from "../../lib/contactValidation.js";
 import { useContactForm } from "../../hooks/useContactForm.js";
 import Toast from "../Toast.jsx";
+import { trackContactClick } from "../../lib/analytics.js";
 
 export default function ContactForm() {
   const {
@@ -249,7 +250,11 @@ export default function ContactForm() {
               </button>
 
               {emailMethod?.value && (
-                <a className="contact__alt" href={`mailto:${emailMethod.value}`}>
+                <a
+                  className="contact__alt"
+                  href={`mailto:${emailMethod.value}`}
+                  onClick={() => trackContactClick("email", "contact_form")}
+                >
                   Préférer un contact direct par email
                 </a>
               )}

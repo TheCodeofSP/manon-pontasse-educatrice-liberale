@@ -50,9 +50,20 @@ export function disableAnalytics() {
 }
 
 export function trackPageView(path) {
-  if (!enabled || !window.gtag) return;
-  window.gtag("event", "page_view", {
+  trackEvent("page_view", {
     page_path: path,
     page_location: window.location.href,
+  });
+}
+
+export function trackEvent(name, parameters = {}) {
+  if (!enabled || typeof window === "undefined" || !window.gtag) return;
+  window.gtag("event", name, parameters);
+}
+
+export function trackContactClick(method, location) {
+  trackEvent("contact_click", {
+    contact_method: method,
+    link_location: location,
   });
 }

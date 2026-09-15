@@ -7,6 +7,7 @@ import LogoSP from "../assets/logosp.webp";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import { useContent } from "../content/useContent.js";
 import Signature from "./Signature.jsx";
+import { trackContactClick } from "../lib/analytics.js";
 
 function normalizePhone(value) {
   return String(value || "").replace(/\s/g, "");
@@ -51,7 +52,11 @@ export default function Footer() {
 
             <div className="footer__contactList">
               {email?.value && (
-                <a className="footer__contactLink" href={`mailto:${email.value}`}>
+                <a
+                  className="footer__contactLink"
+                  href={`mailto:${email.value}`}
+                  onClick={() => trackContactClick("email", "footer")}
+                >
                   <FiMail />
                   <span>{email.value}</span>
                 </a>
@@ -61,6 +66,7 @@ export default function Footer() {
                 <a
                   className="footer__contactLink"
                   href={`tel:${normalizePhone(phone.value)}`}
+                  onClick={() => trackContactClick("phone", "footer")}
                 >
                   <FiPhone />
                   <span>{phone.value}</span>
